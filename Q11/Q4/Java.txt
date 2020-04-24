@@ -1,0 +1,39 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Servlet extends HttpServlet 
+{
+	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		int i=Integer.parseInt(req.getParameter("num1")) ;
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k = 0;
+		String operation=req.getParameter("op");
+		if(operation.equals("Addition"))
+		{
+			k=i+j;
+		}
+		else if(operation.equals("Subtraction"))
+		{
+			k=i-j;
+		}
+		else if(operation.equals("Multiplication"))
+		{
+			k=i*j;
+		}
+		else if(operation.equals("Division"))
+		{
+			k=i/j;
+		}
+		PrintWriter out=res.getWriter();
+		out.println("Your Answer is :"+k);
+	}
+
+}
+ 
